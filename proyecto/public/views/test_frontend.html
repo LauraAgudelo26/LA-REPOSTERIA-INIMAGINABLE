@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Login Frontend</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .logueado { background: #d4edda; color: #155724; }
+        .no-logueado { background: #f8d7da; color: #721c24; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Test Login Frontend</h1>
+    
+    <!-- Botones de autenticación (como en index.html) -->
+    <div id="authButtons" style="display: none;">
+        <a href="../usuarios/views/iniciar_sesion.html">🔐 Iniciar Sesión</a>
+        <a href="../usuarios/views/registrarse.html">📝 Registrarse</a>
+    </div>
+    
+    <!-- Info del usuario (como en index.html) -->
+    <div id="userInfo" style="display: none;">
+        👤 <span id="userName">Usuario</span>
+        <button onclick="logout()">🚪 Cerrar Sesión</button>
+    </div>
+    
+    <div id="status" class="status">Verificando...</div>
+    <button onclick="verificarSesion()">🔄 Verificar Sesión</button>
+    <button onclick="testLogin()">🔑 Test Login Admin</button>
+    
+    <div id="debug"></div>
+    
+    <script>
+        let usuarioLogueado = null;
+        const userInfo = document.getElementById('userInfo');
+        const userName = document.getElementById('userName');
+        const authButtons = document.getElementById('authButtons');
+        const status = document.getElementById('status');
+        const debug = document.getElementById('debug');
+        
+        function log(message) {
+            debug.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+            console.log(message);
+        }
+        
+        async function verificarSesion() {
+            try {
+                log('🔍 Verificando sesión...');
+                const response = await fetch('../usuarios/controllers/obtener_datos_sesion.php');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                log('📊 Datos de sesión: ' + JSON.stringify(data));
+                
+                if (data.usuario_logueado) {
+                    log('✅ Usuario logueado, obteniendo información...');
+                    const userResponse = await fetch('../usuarios/api/api_usuario_info.php');
+                    
+                    if (!userResponse.ok) {
+                        throw new Error(`HTTP ${userResponse.status}: ${userResponse.statusText}`);
+                    }
+                    
+                    const userData = await userResponse.json();
+                    log('👤 Datos de usuario: ' + JSON.stringify(userData));
+                    
+                    if (userData.success) {
+                        usuarioLogueado = userData.usuario;
+                        mostrarInfoUsuario();
+                    } else {
+                        log('❌ Error en datos de usuario: ' + userData.error);
+                        mostrarBotonesAuth();
+                    }
+                } else {
+                    log('ℹ️ Usuario no logueado');
+                    mostrarBotonesAuth();
+                }
+            } catch (error) {
+                log('❌ Error verificando sesión: ' + error.message);
+                mostrarBotonesAuth();
+            }
+        }
+        
+        function mostrarInfoUsuario() {
+            if (usuarioLogueado) {
+                log('👤 Mostrando información del usuario');
+                userName.textContent = usuarioLogueado.nombre + ' ' + usuarioLogueado.apellido;
+                userInfo.style.display = 'block';
+                authButtons.style.display = 'none';
+                status.className = 'status logueado';
+                status.textContent = '✅ Usuario logueado: ' + usuarioLogueado.nombre;
+            }
+        }
+        
+        function mostrarBotonesAuth() {
+            log('🔄 Mostrando botones de autenticación');
+            userInfo.style.display = 'none';
+            authButtons.style.display = 'block';
+            status.className = 'status no-logueado';
+            status.textContent = '❌ Usuario no logueado';
+        }
+        
+        async function testLogin() {
+            try {
+                log('🔑 Realizando test de login...');
+                const formData = new FormData();
+                formData.append('email', 'admin@placeresocultos.com');
+                formData.append('password', 'admin123');
+                formData.append('csrf_token', 'test_token');
+                
+                const response = await fetch('../usuarios/controllers/procesar_login.php', {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: formData
+                });
+                
+                const data = await response.json();
+                log('🔑 Resultado login: ' + JSON.stringify(data));
+                
+                if (data.success) {
+                    log('✅ Login exitoso! Verificando sesión en 2 segundos...');
+                    setTimeout(verificarSesion, 2000);
+                } else {
+                    log('❌ Login fallido: ' + data.message);
+                }
+                
+            } catch (error) {
+                log('❌ Error en login: ' + error.message);
+            }
+        }
+        
+        function logout() {
+            window.location.href = '../usuarios/controllers/logout.php';
+        }
+        
+        // Auto-verificar al cargar
+        window.onload = verificarSesion;
+    </script>
+</body>
+</html>

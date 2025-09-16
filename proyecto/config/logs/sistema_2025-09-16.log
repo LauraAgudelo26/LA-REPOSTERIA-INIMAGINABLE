@@ -1,0 +1,112 @@
+[2025-09-16 00:00:27] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:06:34] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:07:02] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:07:41] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:09:18] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; es-CO) WindowsPowerShell/5.1.19041.6280
+[2025-09-16 00:09:42] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:10:06] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:10:06] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:10:42] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:12:01] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:12:02] [INFO] [::1] Usuario registrado exitosamente: angel@gmail.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:12:02] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:12:02] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:12:46] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:12:46] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:13:01] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:13:06] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:13:06] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:16:29] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:16:44] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:16:44] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:16:45] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:16:45] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:16:57] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:16:57] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:17:00] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:18:30] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:19:43] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:19:43] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:20:39] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:20:39] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:20:48] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:20:48] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:21:02] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:21:02] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:21:05] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:21:05] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:21:13] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:21:13] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.104.0 Chrome/138.0.7204.235 Electron/37.3.1 Safari/537.36
+[2025-09-16 00:21:19] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:21:19] [WARNING] [::1] Intento de login con token CSRF inválido desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:23:01] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:23:01] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:23:01] [ERROR] [::1] Error en verificación de login: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'idCliente' in 'field list' - User Agent: N/A
+[2025-09-16 00:23:01] [WARNING] [::1] Intento de login fallido para: admin@placeresocultos.com desde IP: ::1 - User Agent: N/A
+[2025-09-16 00:23:36] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:24:11] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:24:11] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:24:12] [INFO] [::1] Login exitoso para usuario: admin@placeresocultos.com - User Agent: N/A
+[2025-09-16 00:24:12] [INFO] [::1] Login exitoso para usuario: admin@placeresocultos.com (ID: 1) desde IP: ::1 - User Agent: N/A
+[2025-09-16 00:25:32] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:26:47] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:47] [WARNING] [::1] Intento de login fallido para: angel@gmail.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:47] [WARNING] [::1] Intento de login fallido para: angel@gmail.com desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:53] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:53] [WARNING] [::1] Intento de login fallido para: angel@gmail.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:53] [WARNING] [::1] Intento de login fallido para: angel@gmail.com desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:58] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:26:58] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:06] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:06] [WARNING] [::1] Intento de login fallido para: angel@gmail.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:06] [WARNING] [::1] Intento de login fallido para: angel@gmail.com desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:34] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:34] [WARNING] [::1] Intento de login fallido para: angel@gmail.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:34] [WARNING] [::1] Intento de login fallido para: angel@gmail.com desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:56] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:57] [INFO] [::1] Login exitoso para usuario: admin@placeresocultos.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:57] [INFO] [::1] Login exitoso para usuario: admin@placeresocultos.com (ID: 1) desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:58] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:27:58] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:28:05] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:28:05] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:28:19] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:28:19] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:29:48] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:31:17] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:31:17] [INFO] [N/A] Login exitoso para usuario: admin@placeresocultos.com - User Agent: N/A
+[2025-09-16 00:31:17] [INFO] [N/A] Login exitoso para usuario: cliente@test.com - User Agent: N/A
+[2025-09-16 00:31:17] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:17] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:17] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:18] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:18] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:18] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:18] [WARNING] [N/A] Intento de login fallido para: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:31:59] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:31:59] [INFO] [N/A] Login exitoso para usuario: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:34:10] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:34:10] [INFO] [N/A] Login exitoso para usuario: admin@placeresocultos.com - User Agent: N/A
+[2025-09-16 00:34:10] [INFO] [N/A] Login exitoso para usuario: cliente@test.com - User Agent: N/A
+[2025-09-16 00:34:10] [INFO] [N/A] Login exitoso para usuario: angel@gmail.com - User Agent: N/A
+[2025-09-16 00:34:10] [INFO] [N/A] Login exitoso para usuario: admin@placeresocultos.com - User Agent: N/A
+[2025-09-16 00:36:05] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:05] [WARNING] [::1] Intento de login fallido para: angel@gmail.com - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:05] [WARNING] [::1] Intento de login fallido para: angel@gmail.com desde IP: ::1 - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:16] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:16] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:22] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:22] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:47] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:47] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:52] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:36:52] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:37:27] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:37:27] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:37:50] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:37:53] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:37:53] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:41:41] [INFO] [N/A] Conexión a base de datos establecida exitosamente - User Agent: N/A
+[2025-09-16 00:44:19] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:44:19] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0
+[2025-09-16 00:50:23] [INFO] [::1] Conexión a base de datos establecida exitosamente - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0

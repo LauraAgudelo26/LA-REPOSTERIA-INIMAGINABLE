@@ -1,0 +1,3 @@
+Options +ExecCGI
+AddHandler php-script .php
+DirectoryIndex index.php index.html

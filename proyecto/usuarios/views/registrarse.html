@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario - La Repostería de lo Inimaginable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      font-family: 'Arial', sans-serif;
+    }
+    .registro-container {
+      max-width: 500px;
+      margin: 80px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .form-title {
+      text-align: center;
+      color: #FF0000;
+      margin-bottom: 20px;
+      font-family: 'Comic Sans MS', cursive;
+    }
+    .btn-fruty {
+      background-color: #FF0000;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 20px;
+      transition: 0.3s;
+      width: 100%;
+    }
+    .btn-fruty:hover {
+      background-color: #cc0000;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <div class="registro-container">
+    <h2 class="form-title">Crear Cuenta</h2>
+    <form action="../controllers/guardar_usuario.php" method="POST" onsubmit="return validarFormulario()">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" name="apellido" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" name="nombre_usuario" required pattern="[a-zA-Z0-9]{3,}">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="tel" class="form-control" name="telefono" required pattern="[0-9]{10}">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Dirección</label>
+        <textarea class="form-control" name="direccion" rows="2"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Tipo de documento</label>
+        <select class="form-control" name="tipo_documento" required>
+          <option value="">Seleccione</option>
+          <option value="cc">Cédula</option>
+          <option value="ti">Tarjeta de Identidad</option>
+          <option value="dni">DNI</option>
+          <option value="pasaporte">Pasaporte</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Número de documento</label>
+        <input type="text" class="form-control" name="numero_documento" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="password" id="password" required minlength="6">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirmar contraseña</label>
+        <input type="password" class="form-control" name="confirmar_password" id="confirmar_password" required>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="terminos" required>
+        <label class="form-check-label" for="terminos">
+          Acepto los <a href="#">términos y condiciones</a>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-fruty">Registrarse</button>
+    </form>
+    <div class="text-center mt-3">
+      <p>¿Ya tienes una cuenta? <a href="index.html">Inicia sesión</a></p>
+    </div>
+  </div>
+
+  <script>
+    function validarFormulario() {
+      let pass = document.getElementById("password").value;
+      let confirmar = document.getElementById("confirmar_password").value;
+      if (pass !== confirmar) {
+        alert("Las contraseñas no coinciden.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

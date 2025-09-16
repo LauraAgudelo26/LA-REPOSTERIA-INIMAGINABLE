@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeres Ocultos - Productos Especiales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(0,0,0,0.8);
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #ff69b4;
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 10px 0 0 0;
+        }
+
+        .filters-container {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: #fff;
+            padding: 12px 24px;
+            margin: 5px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .filter-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .filter-button.active {
+            background: #ff69b4;
+            border-color: #ff69b4;
+            color: #fff;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(255,105,180,0.5);
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            color: #333;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            color: #e91e63;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-special {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-special:hover {
+            background: linear-gradient(45deg, #ff1493, #dc143c);
+            transform: scale(1.05);
+        }
+
+        .warning-notice {
+            background: rgba(255,193,7,0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            margin: 50px 0;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #fff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Volver al Inicio
+            </a>
+            <h1><i class="fas fa-heart"></i> Placeres Ocultos</h1>
+            <p>Productos Especiales para Momentos Únicos</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="warning-notice">
+            <strong><i class="fas fa-exclamation-triangle"></i> Aviso:</strong> 
+            Esta sección contiene productos para adultos. Debe ser mayor de 18 años para continuar.
+        </div>
+
+        <!-- Filtros y Búsqueda -->
+        <div class="filters-container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar productos especiales..." onkeyup="filtrarProductos()">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <span style="color: white; font-weight: bold;">
+                            <i class="fas fa-box"></i> 
+                            <span id="productos-count">0</span> productos disponibles
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h5 style="color: white; margin-bottom: 15px;">
+                    <i class="fas fa-filter"></i> Filtrar por tipo:
+                </h5>
+                <button class="filter-button active" onclick="filtrarPorTipo('todos')" data-tipo="todos">
+                    <i class="fas fa-th"></i> Todos los Productos
+                </button>
+                <button class="filter-button" onclick="filtrarPorTipo('dulces')" data-tipo="dulces">
+                    <i class="fas fa-candy-cane"></i> Dulces Especiales
+                </button>
+                <button class="filter-button" onclick="filtrarPorTipo('frutas')" data-tipo="frutas">
+                    <i class="fas fa-apple-alt"></i> Frutas Sensuales
+                </button>
+                <button class="filter-button" onclick="filtrarPorTipo('tortas')" data-tipo="tortas">
+                    <i class="fas fa-birthday-cake"></i> Tortas Íntimas
+                </button>
+                <button class="filter-button" onclick="filtrarPorTipo('bebidas')" data-tipo="bebidas">
+                    <i class="fas fa-glass-cheers"></i> Bebidas Afrodisíacas
+                </button>
+                <button class="filter-button" onclick="filtrarPorTipo('premium')" data-tipo="premium">
+                    <i class="fas fa-crown"></i> Premium (+$20.000)
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner fa-spin"></i> Cargando productos especiales...
+        </div>
+
+        <div id="productos-container" class="row" style="display: none;">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+
+        <div id="no-productos" class="text-center" style="display: none;">
+            <div class="alert alert-info">
+                <h4><i class="fas fa-info-circle"></i> Sin productos disponibles</h4>
+                <p>No hay productos especiales que coincidan con tu búsqueda.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let productos = [];
+        let productosFiltrados = [];
+        let filtroActual = 'todos';
+
+        async function cargarProductosEspeciales() {
+            try {
+                const response = await fetch('../../productos/api/api_productos_especiales.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    productos = data.productos;
+                    productosFiltrados = [...productos];
+                    actualizarContador();
+                    renderizarProductos();
+                } else {
+                    throw new Error(data.message || 'Error al cargar productos');
+                }
+            } catch (error) {
+                console.error('Error cargando productos especiales:', error);
+                mostrarError();
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function categorizeProduct(producto) {
+            const nombre = producto.nombre.toLowerCase();
+            const precio = parseFloat(producto.precio);
+            
+            if (precio >= 20000) return 'premium';
+            if (nombre.includes('torta') || nombre.includes('cake') || nombre.includes('despedida')) return 'tortas';
+            if (nombre.includes('bebida') || nombre.includes('afrodisíaca')) return 'bebidas';
+            if (nombre.includes('fruta') || nombre.includes('banano') || nombre.includes('cereza') || 
+                nombre.includes('manzana') || nombre.includes('uvas')) return 'frutas';
+            if (nombre.includes('dulce') || nombre.includes('dona') || nombre.includes('galleta') || 
+                nombre.includes('postre') || nombre.includes('gelatina')) return 'dulces';
+            
+            return 'otros';
+        }
+
+        function filtrarPorTipo(tipo) {
+            filtroActual = tipo;
+            
+            // Actualizar botones activos
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-tipo="${tipo}"]`).classList.add('active');
+            
+            // Aplicar filtros
+            filtrarProductos();
+        }
+
+        function filtrarProductos() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            productosFiltrados = productos.filter(producto => {
+                // Filtro por búsqueda
+                const coincideBusqueda = producto.nombre.toLowerCase().includes(searchTerm) ||
+                                       (producto.descripcion && producto.descripcion.toLowerCase().includes(searchTerm));
+                
+                // Filtro por tipo
+                let coincideTipo = true;
+                if (filtroActual !== 'todos') {
+                    const categoria = categorizeProduct(producto);
+                    coincideTipo = categoria === filtroActual;
+                }
+                
+                return coincideBusqueda && coincideTipo;
+            });
+            
+            actualizarContador();
+            renderizarProductos();
+        }
+
+        function actualizarContador() {
+            document.getElementById('productos-count').textContent = productosFiltrados.length;
+        }
+
+        function renderizarProductos() {
+            const container = document.getElementById('productos-container');
+            const noProductos = document.getElementById('no-productos');
+
+            if (productosFiltrados.length === 0) {
+                container.style.display = 'none';
+                noProductos.style.display = 'block';
+                return;
+            }
+
+            container.style.display = 'block';
+            noProductos.style.display = 'none';
+            container.innerHTML = '';
+
+            productosFiltrados.forEach(producto => {
+                const col = document.createElement('div');
+                col.className = 'col-lg-4 col-md-6 mb-4';
+
+                const categoria = categorizeProduct(producto);
+                const iconoCategoria = getIconoCategoria(categoria);
+
+                col.innerHTML = `
+                    <div class="product-card">
+                        <div style="position: relative;">
+                            <img src="../img/${producto.imagen}" class="product-image" alt="${producto.nombre}" 
+                                 onerror="this.src='../img/placeholder.svg'">
+                            <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem;">
+                                <i class="${iconoCategoria}"></i>
+                            </div>
+                        </div>
+                        <div class="product-title">${producto.nombre}</div>
+                        <div class="product-description">${producto.descripcion || 'Producto especial único'}</div>
+                        <div class="product-price">$${formatearPrecio(producto.precio)}</div>
+                        <div class="text-center">
+                            <button class="btn btn-special" onclick="ordenarProducto('${producto.nombre}', '${producto.precio}', ${producto.id})">
+                                <i class="fas fa-heart"></i> Agregar al Deseo
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function getIconoCategoria(categoria) {
+            const iconos = {
+                'dulces': 'fas fa-candy-cane',
+                'frutas': 'fas fa-apple-alt',
+                'tortas': 'fas fa-birthday-cake',
+                'bebidas': 'fas fa-glass-cheers',
+                'premium': 'fas fa-crown',
+                'otros': 'fas fa-heart'
+            };
+            return iconos[categoria] || 'fas fa-heart';
+        }
+
+        function formatearPrecio(precio) {
+            return new Intl.NumberFormat('es-CO').format(precio);
+        }
+
+        function mostrarError() {
+            document.getElementById('no-productos').style.display = 'block';
+            document.getElementById('no-productos').innerHTML = `
+                <div class="alert alert-danger">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Error de conexión</h4>
+                    <p>No se pudieron cargar los productos especiales. Intente más tarde.</p>
+                </div>
+            `;
+        }
+
+        function ordenarProducto(nombre, precio, id) {
+            // Animación de corazón
+            const btn = event.target.closest('button');
+            btn.innerHTML = '<i class="fas fa-heart-broken"></i> ¡Añadido!';
+            btn.style.background = 'linear-gradient(45deg, #dc143c, #8b0000)';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-heart"></i> Agregar al Deseo';
+                btn.style.background = 'linear-gradient(45deg, #ff69b4, #ff1493)';
+            }, 2000);
+            
+            // Notificación
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed; top: 20px; right: 20px; z-index: 9999;
+                background: linear-gradient(45deg, #ff69b4, #ff1493);
+                color: white; padding: 15px 20px; border-radius: 25px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                animation: slideIn 0.5s ease;
+            `;
+            toast.innerHTML = `<i class="fas fa-heart"></i> "${nombre}" añadido a tus deseos`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Cargar productos al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarProductosEspeciales);
+    </script>
+
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</body>
+</html>

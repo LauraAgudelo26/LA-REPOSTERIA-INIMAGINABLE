@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeres Ocultos - Repostería Exclusiva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #97CCEB;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Pantalla de carga */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #ff69b4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .loading-subtext {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #90E0EF 0%, #fad0c4 100%);
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .user-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.5rem;
+        }
+
+        .subtitle {
+            color: #5a3e36;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Cards de productos */
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            background-color: white;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            color: #FF0000;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .card-text {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .categoria-badge {
+            background: linear-gradient(135deg, #ff69b4, #8b008b);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .destacado-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .stock-info {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin: 5px 0;
+        }
+
+        .btn-fruty {
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .btn-fruty:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .section-title {
+            color: #FF0000;
+            border-bottom: 2px dashed #FF0000;
+            padding-bottom: 10px;
+            margin: 40px 0 30px;
+            text-align: center;
+        }
+
+        /* Filtros y categorías */
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            color: #495057;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #ff69b4, #8b008b);
+            border-color: #ff69b4;
+            color: white;
+        }
+
+        .category-btn:hover {
+            border-color: #ff69b4;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .user-info {
+                position: static;
+                margin-top: 20px;
+            }
+            
+            .category-filter {
+                justify-content: center;
+            }
+        }
+
+        /* Estado sin productos */
+        .no-products {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7f8c8d;
+        }
+
+        .no-products i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="spinner"></div>
+        <div class="loading-text">Cargando Placeres Ocultos</div>
+        <div class="loading-subtext">Preparando nuestros deliciosos productos...</div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="user-info" id="userInfo" style="display: none;">
+            <i class="fas fa-user-circle"></i>
+            <span id="userName">Invitado</span>
+            <a href="#" id="logoutBtn" class="ms-2 text-white"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+        
+        <div class="container">
+            <h1 class="title">Placeres Ocultos</h1>
+            <p class="subtitle">La Repostería de lo Inimaginable</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Filtros de categorías -->
+        <div class="filter-section">
+            <h5 class="text-center mb-3">Filtrar por Categoría</h5>
+            <div class="category-filter" id="categoryFilter">
+                <button class="category-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i> Todos
+                </button>
+            </div>
+        </div>
+
+        <!-- Sección de productos destacados -->
+        <div id="productosDestacados" style="display: none;">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i> Productos Destacados
+            </h2>
+            <div class="row" id="destacadosContainer">
+                <!-- Los productos destacados se cargarán aquí -->
+            </div>
+        </div>
+
+        <!-- Sección de todos los productos -->
+        <h2 class="section-title">
+            <i class="fas fa-birthday-cake"></i> Nuestros Productos
+        </h2>
+        
+        <div class="row" id="productosContainer">
+            <!-- Los productos se cargarán dinámicamente aquí -->
+        </div>
+
+        <!-- Mensaje cuando no hay productos -->
+        <div class="no-products" id="noProducts" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h4>No se encontraron productos</h4>
+            <p>Intenta cambiar los filtros o verifica tu conexión.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        // Variables globales
+        let todosLosProductos = [];
+        let categorias = [];
+        let categoriaActual = 'all';
+        let usuarioLogueado = null;
+
+        // Elementos del DOM
+        const loadingScreen = document.getElementById('loadingScreen');
+        const productosContainer = document.getElementById('productosContainer');
+        const destacadosContainer = document.getElementById('destacadosContainer');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const userInfo = document.getElementById('userInfo');
+        const userName = document.getElementById('userName');
+        const noProducts = document.getElementById('noProducts');
+        const productosDestacados = document.getElementById('productosDestacados');
+
+        // Función para verificar si el usuario está logueado
+        async function verificarSesion() {
+            try {
+                const response = await fetch('obtener_datos_sesion.php');
+                const data = await response.json();
+                
+                if (data.usuario_logueado) {
+                    // El usuario está logueado, obtener información
+                    const userResponse = await fetch('api_usuario_info.php');
+                    const userData = await userResponse.json();
+                    
+                    if (userData.success) {
+                        usuarioLogueado = userData.usuario;
+                        mostrarInfoUsuario();
+                    }
+                }
+            } catch (error) {
+                console.log('Usuario no logueado o error verificando sesión');
+            }
+        }
+
+        // Mostrar información del usuario logueado
+        function mostrarInfoUsuario() {
+            if (usuarioLogueado) {
+                userName.textContent = `${usuarioLogueado.nombre} ${usuarioLogueado.apellido}`;
+                userInfo.style.display = 'block';
+                
+                // Agregar evento de logout
+                document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            }
+        }
+
+        // Función de logout
+        function logout() {
+            Swal.fire({
+                title: '¿Cerrar sesión?',
+                text: '¿Estás seguro de que quieres cerrar tu sesión?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, cerrar sesión',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'logout.php';
+                }
+            });
+        }
+
+        // Cargar categorías
+        async function cargarCategorias() {
+            try {
+                const response = await fetch('api_categorias.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    categorias = data.categorias;
+                    renderizarFiltrosCategorias();
+                }
+            } catch (error) {
+                console.error('Error cargando categorías:', error);
+            }
+        }
+
+        // Renderizar filtros de categorías
+        function renderizarFiltrosCategorias() {
+            // Limpiar filtros existentes (excepto "Todos")
+            const botones = categoryFilter.querySelectorAll('.category-btn:not([data-category="all"])');
+            botones.forEach(btn => btn.remove());
+
+            // Agregar categorías
+            categorias.forEach(categoria => {
+                const button = document.createElement('button');
+                button.className = 'category-btn';
+                button.setAttribute('data-category', categoria.id);
+                button.innerHTML = `<i class="fas fa-tag"></i> ${categoria.nombre} (${categoria.total_productos})`;
+                
+                button.addEventListener('click', () => filtrarPorCategoria(categoria.id));
+                categoryFilter.appendChild(button);
+            });
+        }
+
+        // Cargar productos
+        async function cargarProductos() {
+            try {
+                const response = await fetch('api_productos.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    todosLosProductos = data.productos;
+                    renderizarProductos();
+                    renderizarProductosDestacados();
+                } else {
+                    throw new Error(data.message || 'Error desconocido');
+                }
+            } catch (error) {
+                console.error('Error cargando productos:', error);
+                mostrarError('Error al cargar productos', error.message);
+            }
+        }
+
+        // Renderizar productos destacados
+        function renderizarProductosDestacados() {
+            const destacados = todosLosProductos.filter(producto => producto.destacado);
+            
+            if (destacados.length > 0) {
+                destacadosContainer.innerHTML = '';
+                destacados.forEach(producto => {
+                    destacadosContainer.appendChild(crearCardProducto(producto));
+                });
+                productosDestacados.style.display = 'block';
+            }
+        }
+
+        // Renderizar productos
+        function renderizarProductos() {
+            let productosFiltrados = todosLosProductos;
+            
+            // Filtrar por categoría si no es "all"
+            if (categoriaActual !== 'all') {
+                productosFiltrados = todosLosProductos.filter(producto => 
+                    producto.categoria_id == categoriaActual
+                );
+            }
+
+            // Limpiar contenedor
+            productosContainer.innerHTML = '';
+
+            if (productosFiltrados.length === 0) {
+                noProducts.style.display = 'block';
+                return;
+            }
+
+            noProducts.style.display = 'none';
+
+            // Renderizar productos
+            productosFiltrados.forEach(producto => {
+                productosContainer.appendChild(crearCardProducto(producto));
+            });
+        }
+
+        // Crear card de producto
+        function crearCardProducto(producto) {
+            const col = document.createElement('div');
+            col.className = 'col-lg-3 col-md-4 col-sm-6 mb-4';
+
+            col.innerHTML = `
+                <div class="card h-100" style="position: relative;">
+                    ${producto.destacado ? '<div class="destacado-badge">Destacado</div>' : ''}
+                    <img src="${producto.imagen_url}" class="card-img-top" alt="${producto.nombre}" 
+                         onerror="this.src='img/placeholder.jpg'">
+                    <div class="card-body">
+                        <div class="categoria-badge">${producto.categoria_nombre || 'Sin categoría'}</div>
+                        <h5 class="card-title">${producto.nombre}</h5>
+                        <p class="card-text">${producto.descripcion || 'Delicioso producto artesanal'}</p>
+                        <div class="stock-info">
+                            <i class="fas fa-box"></i> Stock: ${producto.stock} unidades
+                        </div>
+                        <div class="price">$${producto.precio_formateado}</div>
+                        <button class="btn btn-fruty btn-ordenar" 
+                                data-producto="${producto.nombre}" 
+                                data-precio="${producto.precio}"
+                                data-id="${producto.id}">
+                            <i class="fas fa-shopping-cart"></i> Ordenar
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            return col;
+        }
+
+        // Filtrar por categoría
+        function filtrarPorCategoria(categoriaId) {
+            categoriaActual = categoriaId;
+            
+            // Actualizar botones activos
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-category="${categoriaId}"]`).classList.add('active');
+            
+            // Renderizar productos filtrados
+            renderizarProductos();
+        }
+
+        // Mostrar error
+        function mostrarError(titulo, mensaje) {
+            Swal.fire({
+                title: titulo,
+                text: mensaje,
+                icon: 'error',
+                confirmButtonText: 'Entendido'
+            });
+        }
+
+        // Manejar clicks en botones de ordenar
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('btn-ordenar') || e.target.closest('.btn-ordenar')) {
+                const boton = e.target.closest('.btn-ordenar');
+                const producto = boton.getAttribute('data-producto');
+                const precio = boton.getAttribute('data-precio');
+                const id = boton.getAttribute('data-id');
+
+                if (!usuarioLogueado) {
+                    Swal.fire({
+                        title: 'Necesitas iniciar sesión',
+                        text: 'Para realizar pedidos debes estar logueado',
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonText: 'Iniciar Sesión',
+                        cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'iniciar_sesion.html';
+                        }
+                    });
+                    return;
+                }
+
+                Swal.fire({
+                    title: `¿Deseas ordenar ${producto}?`,
+                    text: `Precio: $${parseFloat(precio).toLocaleString()}`,
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'Sí, ordenar',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Aquí se procesaría el pedido
+                        Swal.fire({
+                            title: '¡Pedido agregado!',
+                            text: `${producto} ha sido agregado a tu carrito`,
+                            icon: 'success',
+                            timer: 2000,
+                            timerProgressBar: true
+                        });
+                    }
+                });
+            }
+        });
+
+        // Inicializar la aplicación
+        async function inicializar() {
+            try {
+                // Mostrar pantalla de carga por al menos 2 segundos
+                const tiempoMinimo = new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Cargar datos en paralelo
+                const promesas = [
+                    verificarSesion(),
+                    cargarCategorias(),
+                    cargarProductos(),
+                    tiempoMinimo
+                ];
+                
+                await Promise.all(promesas);
+                
+                // Ocultar pantalla de carga
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+                
+            } catch (error) {
+                console.error('Error inicializando aplicación:', error);
+                mostrarError('Error de carga', 'Hubo un problema cargando la página. Por favor, recarga.');
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', inicializar);
+    </script>
+</body>
+</html>

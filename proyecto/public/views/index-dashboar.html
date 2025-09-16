@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Fruty Fantasy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #9B4443;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .sidebar a,
+    .sidebar button {
+      color: white;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover,
+    .sidebar button:hover {
+      background-color: #E6858A;
+      display: block;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .header {
+      background-color: #f8f9fa;
+      padding: 15px 20px;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .submenu {
+      background-color: #E6858A;
+      padding-left: 1rem;
+    }
+
+    .submenu a {
+      padding-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar d-flex flex-column p-3">
+    <h4 class="mb-4 text-center">Fruty Fantasy</h4>
+    <ul class="nav nav-pills flex-column">
+
+      <!-- Dashboard -->
+      <li class="nav-item mb-2">
+        <a href="#" class="nav-link">Dashboard</a>
+      </li>
+
+      <!-- Productos con submenú -->
+      <li class="nav-item mb-2">
+        <button class="btn w-100 text-start" data-bs-toggle="collapse" data-bs-target="#submenuProductos" aria-expanded="false">
+          Productos
+        </button>
+        <div class="collapse submenu" id="submenuProductos">
+          <a href="#" class="nav-link">Ver Productos</a> 
+          <h5 class="card-title">Banano</h5>
+                <p class="card-text">El banano es una fruta tropical muy popular y nutritiva.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="price">$2.000</span>
+                        <button class="btn btn-fruty">Ordenar</button>
+                    </div>
+
+            <h5 class="card-title">Manzana</h5>
+                <p class="card-text">Las manzanas son una de las frutas más populares y consumidas a nivel mundial.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="price">$3.000</span>
+                        <button class="btn btn-fruty">Ordenar</button>
+                    </div>
+
+            <h5 class="card-title">Fresa con masmelo</h5>
+                <p class="card-text">La combinación de fresa con masmelo es un deleite que combina lo mejor de dos mundos.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="price">$2.500</span>
+                        <button class="btn btn-fruty">Ordenar</button>
+                    </div>
+
+             <h5 class="card-title">Pinchos</h5>
+                     <p class="card-text">Los pinchos de frutas son muy nutritivos para la salud.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">$3.000</span>
+                            <button class="btn btn-fruty">Ordenar</button>
+                        </div>
+
+            <h5 class="card-title">Uvas</h5>
+                    <p class="card-text">Las uvas son frutas versátiles y nutritivas con una larga historia de consumo y cultivo.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">$5.700</span>
+                            <button class="btn btn-fruty">Ordenar</button>
+                        </div>
+                        
+          <a href="#" class="nav-link">Agregar Producto</a>
+        </div>
+      </li>
+
+      <!-- Categorías con submenú -->
+      <li class="nav-item mb-2">
+        <button class="btn w-100 text-start" data-bs-toggle="collapse" data-bs-target="#submenuCategorias" aria-expanded="false">
+          Categorías
+        </button>
+        <div class="collapse submenu" id="submenuCategorias">
+          <a href="#" class="nav-link">Ver Categorías</a>
+          <a href="#" class="nav-link">Agregar Categoría</a>
+        </div>
+      </li>
+
+      <!-- Usuarios con submenú -->
+      <li class="nav-item mb-2">
+        <button class="btn w-100 text-start" data-bs-toggle="collapse" data-bs-target="#submenuUsuarios" aria-expanded="false">
+          Usuarios
+        </button>
+        <div class="collapse submenu" id="submenuUsuarios">
+          <a href="#" class="nav-link">Lista de Usuarios</a>
+          <a href="#" class="nav-link">Agregar Usuario</a>
+        </div>
+      </li>
+
+      <!-- Cerrar sesión -->
+      <li class="nav-item mt-auto">
+        <a href="#" class="nav-link text-danger">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content">
+    <div class="header">
+      <h3>Panel de Administración</h3>
+    </div>
+
+    <div class="mt-4">
+      <h5>Bienvenido(a)</h5>
+      <p>Desde aquí puedes ver los productos, categorías, usuarios y más.</p>
+
+      <div class="card">
+        <div class="card-header">
+          Productos recientes
+        </div>
+        <div class="card-body">
+          <p class="card-text">Aquí iría una tabla o resumen de los últimos productos registrados.</p>
+          <a href="#" class="btn btn-success">Ver todos los productos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

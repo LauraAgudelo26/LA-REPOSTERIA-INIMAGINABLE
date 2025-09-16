@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System - Fixed</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .credentials { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .btn { display: inline-block; padding: 10px 20px; margin: 5px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        .btn:hover { background: #0056b3; }
+        .success { color: #28a745; }
+        .info { color: #17a2b8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Sistema de Login Corregido</h1>
+        
+        <div class="credentials">
+            <h3>🔑 Credenciales de Prueba:</h3>
+            <ul>
+                <li><strong>Admin:</strong> admin@placeresocultos.com / admin123</li>
+                <li><strong>Cliente:</strong> cliente@test.com / cliente123</li>
+                <li><strong>Angel:</strong> angel@gmail.com / angel123</li>
+            </ul>
+        </div>
+        
+        <h3>✅ Problemas Corregidos:</h3>
+        <ul class="success">
+            <li>✅ Login de Angel funcionando</li>
+            <li>✅ Función verificarLogin() actualizada para estructura real de BD</li>
+            <li>✅ Variables de sesión configuradas correctamente (cliente_id)</li>
+            <li>✅ API de usuario info corregida</li>
+            <li>✅ Interfaz con debug mejorado y logs</li>
+            <li>✅ Verificación automática de sesión</li>
+        </ul>
+        
+        <h3>🚀 Instrucciones:</h3>
+        <ol class="info">
+            <li>Ve a la página de login</li>
+            <li>Inicia sesión con cualquiera de las credenciales arriba</li>
+            <li>Regresa a la página principal</li>
+            <li>Deberías ver tu nombre y el botón de cerrar sesión</li>
+        </ol>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="../usuarios/views/iniciar_sesion.html" class="btn">🔐 Ir a Login</a>
+            <a href="index.html" class="btn">🏠 Página Principal</a>
+            <a href="test_frontend.html" class="btn">🔧 Test Frontend</a>
+        </div>
+        
+        <hr style="margin: 20px 0;">
+        <p><strong>Nota:</strong> Si los botones siguen sin cambiar después del login, abre la consola del navegador (F12) para ver los logs de debug que agregué al sistema.</p>
+    </div>
+</body>
+</html>
