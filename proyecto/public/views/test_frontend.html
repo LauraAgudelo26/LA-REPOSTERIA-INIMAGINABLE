@@ -16,8 +16,8 @@
     
     <!-- Botones de autenticación (como en index.html) -->
     <div id="authButtons" style="display: none;">
-        <a href="../usuarios/views/iniciar_sesion.html">🔐 Iniciar Sesión</a>
-        <a href="../usuarios/views/registrarse.html">📝 Registrarse</a>
+        <a href="../../usuarios/views/iniciar_sesion.html">🔐 Iniciar Sesión</a>
+        <a href="../../usuarios/views/registrarse.html">📝 Registrarse</a>
     </div>
     
     <!-- Info del usuario (como en index.html) -->
@@ -48,7 +48,7 @@
         async function verificarSesion() {
             try {
                 log('🔍 Verificando sesión...');
-                const response = await fetch('../usuarios/controllers/obtener_datos_sesion.php');
+                const response = await fetch('../../usuarios/controllers/obtener_datos_sesion.php');
                 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -59,7 +59,7 @@
                 
                 if (data.usuario_logueado) {
                     log('✅ Usuario logueado, obteniendo información...');
-                    const userResponse = await fetch('../usuarios/api/api_usuario_info.php');
+                    const userResponse = await fetch('../../usuarios/api/api_usuario_info.php');
                     
                     if (!userResponse.ok) {
                         throw new Error(`HTTP ${userResponse.status}: ${userResponse.statusText}`);
@@ -112,7 +112,7 @@
                 formData.append('password', 'admin123');
                 formData.append('csrf_token', 'test_token');
                 
-                const response = await fetch('../usuarios/controllers/procesar_login.php', {
+                const response = await fetch('../../usuarios/controllers/procesar_login.php', {
                     method: 'POST',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'
@@ -136,7 +136,7 @@
         }
         
         function logout() {
-            window.location.href = '../usuarios/controllers/logout.php';
+            window.location.href = '../../usuarios/controllers/logout.php';
         }
         
         // Auto-verificar al cargar
