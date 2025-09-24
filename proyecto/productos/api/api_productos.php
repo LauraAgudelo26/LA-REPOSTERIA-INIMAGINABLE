@@ -8,10 +8,12 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
 require_once '../../config/config_db.php';
+require_once '../controllers/controlador_productos.php';
 
 try {
     $db = DatabaseConnection::getInstance();
     $pdo = $db->getConnection();
+    $controlador = new ProductoController();
     
     // Obtener productos activos con información de categoría (EXCLUYENDO Tortas Especiales)
     $sql = "
@@ -41,20 +43,13 @@ try {
         // Formatear precio en pesos colombianos
         $producto['precio_formateado'] = number_format($producto['precio'], 0, ',', '.');
         
-        // Verificar si la imagen existe en el directorio
-        if (!empty($producto['imagen'])) {
-            $rutaImagen = __DIR__ . '/../../public/img/' . $producto['imagen'];
-            $producto['imagen_existe'] = file_exists($rutaImagen);
-            $producto['imagen_url'] = '../img/' . $producto['imagen'];
-        } else {
-            $producto['imagen_existe'] = false;
-            $producto['imagen_url'] = '../img/placeholder.svg';
-        }
+        // Usar el controlador para obtener la imagen correcta
+        $imagen_url = $controlador->obtenerImagenProducto($producto['nombre']);
         
-        // Agregar placeholder si no existe la imagen
-        if (!$producto['imagen_existe']) {
-            $producto['imagen_url'] = '../img/placeholder.svg';
-        }
+        // Verificar si la imagen existe usando la ruta correcta
+        $rutaImagen = __DIR__ . '/../../public/img/' . $producto['imagen'];
+        $producto['imagen_existe'] = file_exists($rutaImagen);
+        $producto['imagen_url'] = $imagen_url;
         
         // Convertir destacado a boolean
         $producto['destacado'] = (bool)$producto['destacado'];

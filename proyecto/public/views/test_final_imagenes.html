@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST FINAL - Verificación de Imágenes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; border: 1px solid #ccc; padding: 15px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .product-card { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .product-image { width: 100%; height: 150px; object-fit: cover; }
+        .status { font-weight: bold; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>🎯 TEST FINAL - Verificación del Sistema de Imágenes</h1>
+    
+    <div class="test-section">
+        <h2>1. Productos Especiales (API)</h2>
+        <div id="productos-especiales" class="product-grid"></div>
+        <div id="status-especiales" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Productos Normales (API)</h2>
+        <div id="productos-normales" class="product-grid"></div>
+        <div id="status-normales" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test de Imagen Individual</h2>
+        <p>Imagen de prueba: soltera.jpg</p>
+        <img src="../public/img/soltera.jpg" alt="Soltera Test" style="max-width: 200px;" 
+             onload="document.getElementById('img-test').innerHTML = '✅ IMAGEN CARGA CORRECTAMENTE'"
+             onerror="document.getElementById('img-test').innerHTML = '❌ ERROR AL CARGAR IMAGEN'">
+        <div id="img-test" class="status"></div>
+    </div>
+
+    <script>
+        // Función para cargar productos desde API
+        async function cargarProductos(apiUrl, containerId, statusId) {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                
+                const container = document.getElementById(containerId);
+                const status = document.getElementById(statusId);
+                
+                if (data.success) {
+                    let html = '';
+                    let imagenesOk = 0;
+                    let totalImagenes = data.productos.length;
+                    
+                    data.productos.forEach(producto => {
+                        const imagenStatus = producto.imagen_existe ? '✅' : '❌';
+                        if (producto.imagen_existe) imagenesOk++;
+                        
+                        html += `
+                            <div class="product-card">
+                                <img src="${producto.imagen_url}" alt="${producto.nombre}" class="product-image"
+                                     onerror="this.style.border='2px solid red'">
+                                <h4>${producto.nombre}</h4>
+                                <p>$${producto.precio_formateado}</p>
+                                <p>Imagen: ${imagenStatus} ${producto.imagen_existe ? 'OK' : 'ERROR'}</p>
+                            </div>
+                        `;
+                    });
+                    
+                    container.innerHTML = html;
+                    
+                    if (imagenesOk === totalImagenes) {
+                        status.className = 'status success';
+                        status.innerHTML = `✅ TODAS LAS IMÁGENES OK (${imagenesOk}/${totalImagenes})`;
+                    } else {
+                        status.className = 'status error';
+                        status.innerHTML = `❌ PROBLEMAS: ${imagenesOk}/${totalImagenes} imágenes funcionan`;
+                    }
+                } else {
+                    status.className = 'status error';
+                    status.innerHTML = '❌ ERROR EN LA API: ' + data.message;
+                }
+            } catch (error) {
+                document.getElementById(statusId).className = 'status error';
+                document.getElementById(statusId).innerHTML = '❌ ERROR DE CONEXIÓN: ' + error.message;
+            }
+        }
+
+        // Cargar datos al cargar la página
+        window.onload = function() {
+            cargarProductos('../../productos/api/api_productos_especiales.php', 'productos-especiales', 'status-especiales');
+            cargarProductos('../../productos/api/api_productos.php', 'productos-normales', 'status-normales');
+        };
+    </script>
+</body>
+</html>

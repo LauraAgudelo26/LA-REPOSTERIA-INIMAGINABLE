@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Sistema de Imágenes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .producto { border: 1px solid #ccc; margin: 10px; padding: 10px; display: inline-block; }
+        .producto img { width: 200px; height: 150px; object-fit: cover; }
+        .estado { font-weight: bold; }
+        .exitoso { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Prueba del Sistema de Imágenes</h1>
+    <p>Esta página prueba que las imágenes se cargan correctamente desde el API.</p>
+    
+    <div id="productos-container">
+        <p>Cargando productos...</p>
+    </div>
+
+    <script>
+        async function cargarProductos() {
+            try {
+                const response = await fetch('../productos/api/api_productos_especiales.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    mostrarProductos(data.productos);
+                } else {
+                    document.getElementById('productos-container').innerHTML = 
+                        '<p class="error">❌ Error al cargar productos</p>';
+                }
+            } catch (error) {
+                document.getElementById('productos-container').innerHTML = 
+                    '<p class="error">❌ Error de conexión: ' + error.message + '</p>';
+            }
+        }
+        
+        function mostrarProductos(productos) {
+            const container = document.getElementById('productos-container');
+            container.innerHTML = '';
+            
+            productos.forEach(producto => {
+                const div = document.createElement('div');
+                div.className = 'producto';
+                
+                const estadoImagen = producto.imagen_existe ? 
+                    '<span class="estado exitoso">✅ Imagen existe</span>' : 
+                    '<span class="estado error">⚠️ Imagen no encontrada</span>';
+                
+                div.innerHTML = `
+                    <h3>${producto.nombre}</h3>
+                    <img src="${producto.imagen_url}" alt="${producto.nombre}" 
+                         onerror="this.src='../public/img/logo.jpg'; this.style.border='2px solid red';"
+                         onload="this.style.border='2px solid green';">
+                    <p><strong>Precio:</strong> $${producto.precio_formateado}</p>
+                    <p><strong>Imagen BD:</strong> ${producto.imagen}</p>
+                    <p><strong>URL generada:</strong> ${producto.imagen_url}</p>
+                    <p>${estadoImagen}</p>
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+        
+        // Cargar productos al cargar la página
+        window.onload = cargarProductos;
+    </script>
+</body>
+</html>

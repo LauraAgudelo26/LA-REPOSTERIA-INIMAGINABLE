@@ -250,7 +250,7 @@ if (!empty($busqueda)) {
             <img src="<?php echo $imagen; ?>" 
                  class="card-img-top" 
                  alt="<?php echo htmlspecialchars($producto['Producto']); ?>"
-                 onerror="this.src='img/logo.crdownload'">
+                 onerror="this.src='../public/img/logo.jpg'">
             <div class="card-body">
               <h5 class="card-title"><?php echo htmlspecialchars($producto['Producto']); ?></h5>
               <p class="card-text"><?php echo htmlspecialchars($producto['Descripcion']); ?></p>

@@ -4,7 +4,26 @@
  * Maneja todas las operaciones relacionadas con productos
  */
 
-require_once '../../config/config_db.php';
+// Detectar la ruta correcta hacia config_db.php de forma inteligente
+$possible_paths = [
+    '../../config/config_db.php',  // Desde productos/controllers/ 
+    '../config/config_db.php',     // Desde utils/
+    'config/config_db.php',        // Desde raíz del proyecto
+    __DIR__ . '/../../config/config_db.php'  // Ruta absoluta
+];
+
+$config_loaded = false;
+foreach ($possible_paths as $path) {
+    if (file_exists($path)) {
+        require_once $path;
+        $config_loaded = true;
+        break;
+    }
+}
+
+if (!$config_loaded) {
+    throw new Exception('No se pudo encontrar config_db.php');
+}
 
 class ProductoController {
     private $db;
@@ -126,67 +145,103 @@ class ProductoController {
     
     /**
      * Obtener imagen del producto (mapeo con archivos físicos)
+     * Sistema mejorado con búsqueda inteligente
      */
     public function obtenerImagenProducto($nombre_producto) {
-        // Mapeo de nombres de productos con imágenes
+        // Mapeo generado automáticamente - actualizado 2025-09-24
         $mapeo_imagenes = [
             // Postres
-            'Cheesecake de Fresa Delicioso' => 'Cheesecake de Fresa Delicioso.jpg',
+            'Cheesecake Fresa' => 'cheesecake_fresa.jpg',
+            'Cheesecake de Fresa Delicioso' => 'cheesecake_fresa.jpg',
+            'Cheesecake de Fresa' => 'cheesecake_fresa.jpg',
+            'Churros' => 'churros.jpg',
             'Churros Tradicionales' => 'churros.jpg',
+            'Cuca' => 'cuca.jpg',
+            'Cuca Tradicional' => 'cuca.jpg',
+            'Donas' => 'donas.jpg',
             'Donas Glaseadas' => 'donas.jpg',
-            'Postre de Gelatina' => 'postre de gelatina.jpg',
-            'Postre de Limón' => 'postre de limon.jpg',
-            'Postre de Oreo' => 'postre de oreo.jfif',
-            'Rollos de Canela' => 'rollos de canela.jpg',
-            'Cuca Tradicional' => 'cuca.jfif',
+            'Postre Gelatina' => 'postre_gelatina.jpg',
+            'Postre de Gelatina' => 'postre_gelatina.jpg',
+            'Postre Limon' => 'postre_limon.jpg',
+            'Postre de Limón' => 'postre_limon.jpg',
+            'Postre de Limon' => 'postre_limon.jpg',
+            'Postre Oreo' => 'postre_oreo.jpg',
+            'Postre de Oreo' => 'postre_oreo.jpg',
+            'Rollos Canela' => 'rollos_canela.jpg',
+            'Rollos de Canela' => 'rollos_canela.jpg',
             
             // Frutas
-            'Fresas con Crema' => 'fresas con crema.jpg',
-            'Fresas con Marshmallow' => 'fresas con masmelo.jpeg',
+            'Banano' => 'banano.jpg',
             'Banano Fresco' => 'banano.jpg',
-            'Cerezas Selectas' => 'cereza.jpeg',
-            'Manzanas Rojas' => 'manzana.jpeg',
-            'Uvas Frescas' => 'uvas.jpeg',
+            'Cereza' => 'cereza.jpg',
+            'Cerezas Selectas' => 'cereza.jpg',
+            'Fresas Crema' => 'fresas_crema.jpg',
+            'Fresas con Crema' => 'fresas_crema.jpg',
+            'Fresas Marshmallow' => 'fresas_marshmallow.jpg',
+            'Fresas con Marshmallow' => 'fresas_marshmallow.jpg',
+            'Fresas con Masmelo' => 'fresas_marshmallow.jpg',
+            'Manzana' => 'manzana.jpg',
+            'Manzanas Rojas' => 'manzana.jpg',
+            'Uvas' => 'uvas.jpg',
+            'Uvas Frescas' => 'uvas.jpg',
             
             // Pasteles Especiales
-            'Torta para Despedida de Soltera' => 'torta para despedida de soltera___.jpg',
-            'Mini Tarta de Frutas' => 'mini tarta de frutas.jpg',
-            'Funny Birthday Cake' => 'funny birthday cake.jpg',
-            'Galletas de Sujetadores y Tangas' => 'Galletas de Sujetadores y Tangas.jpg',
-            'Lingerie Cake' => 'Lingerie Cake.jpg',
-            'Torta Fálica' => 'pene.jpg',
+            'Mini Tarta Frutas' => 'mini_tarta_frutas.jpg',
+            'Mini Tarta de Frutas' => 'mini_tarta_frutas.jpg',
+            'Torta Cumpleanos' => 'torta_cumpleanos.jpg',
+            'Funny Birthday Cake' => 'torta_cumpleanos.jpg',
+            'Birthday Cake' => 'torta_cumpleanos.jpg',
+            'Torta Falica' => 'torta_falica.jpg',
+            'Torta Fálica' => 'torta_falica.jpg',
+            'Torta Lingerie' => 'torta_lingerie.jpg',
+            'Lingerie Cake' => 'torta_lingerie.jpg',
+            'Torta Soltera' => 'torta_soltera.jpg',
+            'Despedida Soltera' => 'torta_soltera.jpg',
+            'Torta Despedida Soltera' => 'torta_soltera.jpg',
+            'Soltera' => 'torta_soltera.jpg',
             
             // Galletas
-            'Galletas con Chips de Chocolate' => 'galletas con chips de chocolate.jpg',
+            'Galletas Chocolate' => 'galletas_chocolate.jpg',
+            'Galletas con Chips de Chocolate' => 'galletas_chocolate.jpg',
+            'Galletas con Chips' => 'galletas_chocolate.jpg',
+            'Galletas Especiales' => 'galletas_especiales.jpg',
+            'Galletas de Sujetadores y Tangas' => 'galletas_especiales.jpg',
             
             // Bebidas
-            'Cappuccino Artesanal' => 'Cappuccino .jpg',
-            'Bebidas Refrescantes' => 'bebidas refrescantes.png',
+            'Bebidas Refrescantes' => 'bebidas_refrescantes.jpg',
+            'Bebidas' => 'bebidas_refrescantes.jpg',
+            'Cappuccino' => 'cappuccino.jpg',
+            'Cappuccino Artesanal' => 'cappuccino.jpg',
             
-            // Mapeos adicionales para compatibilidad
-            'Cheesecake de Fresa' => 'Cheesecake de Fresa Delicioso.jpg',
-            'Churros' => 'churros.jpg',
-            'Fresas con Crema' => 'fresas con crema.jpg',
-            'Cappuccino' => 'Cappuccino .jpg',
-            'Galletas con Chips' => 'galletas con chips de chocolate.jpg',
-            'Torta Despedida Soltera' => 'torta para despedida de soltera___.jpg'
+            // Otros
+            'Pichos' => 'pichos.jpg'
         ];
-        
+
         // Buscar imagen exacta
         if (isset($mapeo_imagenes[$nombre_producto])) {
-            return 'img/' . $mapeo_imagenes[$nombre_producto];
+            return '../public/img/' . $mapeo_imagenes[$nombre_producto];
         }
-        
-        // Buscar coincidencias parciales
+
+        // Buscar coincidencias parciales (búsqueda inteligente)
         foreach ($mapeo_imagenes as $producto => $imagen) {
-            if (stripos($producto, $nombre_producto) !== false || 
+            if (stripos($producto, $nombre_producto) !== false ||
                 stripos($nombre_producto, $producto) !== false) {
-                return 'img/' . $imagen;
+                return '../public/img/' . $imagen;
             }
         }
-        
-        // Imagen por defecto si no se encuentra
-        return 'img/logo.crdownload';
+
+        // Búsqueda por similitud de palabras clave
+        $palabras_producto = explode(' ', strtolower($nombre_producto));
+        foreach ($mapeo_imagenes as $producto => $imagen) {
+            $palabras_mapeo = explode(' ', strtolower($producto));
+            $coincidencias = array_intersect($palabras_producto, $palabras_mapeo);
+            if (count($coincidencias) >= 1) {
+                return '../public/img/' . $imagen;
+            }
+        }
+
+        // Imagen por defecto
+        return '../public/img/logo.jpg';
     }
     
     /**
@@ -198,7 +253,7 @@ class ProductoController {
 }
 
 // API REST para AJAX
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['api'])) {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['api'])) {
     header('Content-Type: application/json');
     
     $controller = new ProductoController();
