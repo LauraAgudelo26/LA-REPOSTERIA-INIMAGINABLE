@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 15-10-2025 a las 00:10:34
+-- Tiempo de generación: 15-10-2025 a las 01:33:59
 -- Versión del servidor: 8.4.3
 -- Versión de PHP: 8.3.16
 
@@ -78,7 +78,8 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `nombre_usuario`, `email`, `telefono`, `direccion`, `tipo_documento`, `numero_documento`, `password`, `rol`, `activo`, `fecha_registro`, `ultimo_acceso`) VALUES
 (1, 'Administrador', 'Sistema', 'admin', 'admin@placeresocultos.com', '1234567890', 'Dirección Admin', 'cc', NULL, '$2y$10$PJsNoIa2aw3VCB.q54/ykeMw/KvrYhTKD1ePJKt/zcMb/CL3jrwES', 'admin', 1, '2025-09-05 01:30:24', NULL),
 (2, 'Cliente', 'Prueba', 'cliente', 'cliente@test.com', '0987654321', 'Dirección Cliente', 'cc', NULL, '$2y$10$0Bi.w9jqq0ylkmsxzMdSlO0SFi8Gpc1eXqicY2JHEQUCSLYrL022S', 'cliente', 1, '2025-09-05 01:30:24', NULL),
-(3, 'A', 'A', 'a2', 'A@gmail.com', '231', 'Calle A', 'cc', '2123123213', 'aaaaaaa', 'cliente', 1, '2025-09-05 01:54:47', NULL);
+(3, 'A', 'A', 'a2', 'A@gmail.com', '231', 'Calle A', 'cc', '2123123213', 'aaaaaaa', 'cliente', 1, '2025-09-05 01:54:47', NULL),
+(4, 'juan', 'manuel', NULL, 'juan@gmail.com', '12412513265315', 'dasdadasda', 'cc', NULL, '$2b$10$WntVD7GC0ScgCOVQn9K5u.RkhPjEgBnG5Dg8t5RWwYoWic/97ZiAm', 'cliente', 1, '2025-10-15 00:49:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -98,6 +99,13 @@ CREATE TABLE `pedido` (
   `notas` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`id`, `cliente_id`, `total`, `estado`, `fecha_pedido`, `fecha_entrega`, `direccion_entrega`, `telefono_entrega`, `notas`) VALUES
+(3, 4, 40000.00, 'pendiente', '2025-10-15 01:33:41', NULL, 'Calle 73', NULL, 'Pruebas');
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +120,13 @@ CREATE TABLE `pedido_detalle` (
   `precio_unitario` decimal(10,2) NOT NULL,
   `subtotal` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_detalle`
+--
+
+INSERT INTO `pedido_detalle` (`id`, `pedido_id`, `producto_id`, `cantidad`, `precio_unitario`, `subtotal`) VALUES
+(1, 3, 3, 1, 40000.00, 40000.00);
 
 -- --------------------------------------------------------
 
@@ -140,7 +155,7 @@ CREATE TABLE `producto` (
 INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `categoria_id`, `imagen`, `stock`, `activo`, `destacado`, `fecha_creacion`, `fecha_actualizacion`) VALUES
 (1, 'Banano', 'Delicioso Banano hecho artesanalmente', 20000.00, 3, 'banano.jpg', 16, 1, 0, '2025-09-24 00:43:02', '2025-09-24 00:43:02'),
 (2, 'Bebidas Refrescantes', 'Delicioso Bebidas Refrescantes hecho artesanalmente', 25000.00, 5, 'bebidas_refrescantes.jpg', 14, 1, 0, '2025-09-24 00:43:02', '2025-09-24 00:48:39'),
-(3, 'Cappuccino', 'Delicioso Cappuccino hecho artesanalmente', 40000.00, 5, 'cappuccino.jpg', 18, 1, 1, '2025-09-24 00:43:02', '2025-09-24 00:43:02'),
+(3, 'Cappuccino', 'Delicioso Cappuccino hecho artesanalmente', 40000.00, 5, 'cappuccino.jpg', 17, 1, 1, '2025-09-24 00:43:02', '2025-10-15 01:33:41'),
 (4, 'Cereza', 'Delicioso Cereza hecho artesanalmente', 30000.00, 3, 'cereza.jpg', 18, 1, 1, '2025-09-24 00:43:02', '2025-09-24 00:43:02'),
 (5, 'Cheesecake Fresa', 'Delicioso Cheesecake Fresa hecho artesanalmente', 18000.00, 3, 'cheesecake_fresa.jpg', 9, 1, 0, '2025-09-24 00:43:02', '2025-09-24 00:43:02'),
 (6, 'Churros', 'Delicioso Churros hecho artesanalmente', 15000.00, 1, 'churros.jpg', 7, 1, 0, '2025-09-24 00:43:02', '2025-09-24 00:43:02'),
@@ -228,19 +243,19 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_detalle`
 --
 ALTER TABLE `pedido_detalle`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
