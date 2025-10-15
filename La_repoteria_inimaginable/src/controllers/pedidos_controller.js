@@ -56,7 +56,22 @@ export const createPedido = async (req, res) => {
             });
         }
         
-        const pedidoId = await PedidoModel.create(pedidoData);
+        // Convertir 'productos' a 'detalles' con el formato correcto
+        const pedidoCompleto = {
+            cliente_id: pedidoData.cliente_id,
+            total: pedidoData.total || 0,
+            direccion_entrega: pedidoData.direccion_entrega,
+            telefono_entrega: pedidoData.telefono || null,
+            notas: pedidoData.notas || null,
+            detalles: pedidoData.productos.map(prod => ({
+                producto_id: prod.producto_id,
+                cantidad: prod.cantidad,
+                precio_unitario: prod.precio_unitario,
+                subtotal: prod.cantidad * prod.precio_unitario
+            }))
+        };
+        
+        const pedidoId = await PedidoModel.create(pedidoCompleto);
         
         res.status(201).json({
             success: true,

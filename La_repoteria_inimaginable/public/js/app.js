@@ -118,7 +118,8 @@ async function cargarCategorias() {
         const response = await api.getCategorias();
         
         if (response.success) {
-            categorias = response.data;
+            // Filtrar categorías excluyendo "Tortas Especiales" (ID 2)
+            categorias = response.data.filter(categoria => categoria.id !== 2);
             renderizarFiltrosCategorias();
         }
     } catch (error) {
@@ -167,7 +168,8 @@ async function cargarProductos() {
         const response = await api.getProductos();
         
         if (response.success) {
-            todosLosProductos = response.data;
+            // Filtrar productos excluyendo categoría "Tortas Especiales" (ID 2)
+            todosLosProductos = response.data.filter(producto => producto.categoria_id !== 2);
             renderizarProductos();
             renderizarProductosDestacados();
         } else {
@@ -185,11 +187,16 @@ async function renderizarProductosDestacados() {
         const response = await api.getProductosDestacados();
         
         if (response.success && response.data.length > 0) {
-            destacadosContainer.innerHTML = '';
-            response.data.forEach(producto => {
-                destacadosContainer.appendChild(crearCardProducto(producto));
-            });
-            productosDestacados.style.display = 'block';
+            // Filtrar productos destacados excluyendo categoría 2
+            const destacadosFiltrados = response.data.filter(producto => producto.categoria_id !== 2);
+            
+            if (destacadosFiltrados.length > 0) {
+                destacadosContainer.innerHTML = '';
+                destacadosFiltrados.forEach(producto => {
+                    destacadosContainer.appendChild(crearCardProducto(producto));
+                });
+                productosDestacados.style.display = 'block';
+            }
         }
     } catch (error) {
         console.error('Error cargando productos destacados:', error);
@@ -357,6 +364,7 @@ async function procesarPedido(producto, datosPedido) {
                 }
             ],
             direccion_entrega: datosPedido.direccion,
+            telefono: datosPedido.telefono || null,
             notas: datosPedido.notas,
             total: total
         };

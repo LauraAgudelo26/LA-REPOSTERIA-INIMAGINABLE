@@ -139,8 +139,11 @@ export const deleteProducto = async (req, res) => {
 // Obtener productos por categoría
 export const getProductosByCategoria = async (req, res) => {
     try {
-        const { id } = req.params;
-        const productos = await ProductoModel.getByCategoria(id);
+        const { categoria_id } = req.params;
+        console.log('🔍 Buscando productos de categoría:', categoria_id);
+        
+        const productos = await ProductoModel.getByCategoria(categoria_id);
+        console.log(`✅ Encontrados ${productos.length} productos`);
         
         res.json({
             success: true,

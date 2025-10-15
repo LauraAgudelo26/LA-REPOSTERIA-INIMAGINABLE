@@ -85,6 +85,8 @@ class ProductoModel {
                 p.stock,
                 p.imagen,
                 p.destacado,
+                p.activo,
+                c.id as categoria_id,
                 c.nombre as categoria_nombre
             FROM producto p
             INNER JOIN categoria c ON p.categoria_id = c.id
