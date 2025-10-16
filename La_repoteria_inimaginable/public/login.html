@@ -304,15 +304,22 @@
                 const response = await api.login({ email, password });
 
                 if (response.success) {
+                    // Verificar si es admin
+                    const profileResponse = await api.getProfile();
+                    const esAdmin = profileResponse.success && profileResponse.data.rol === 'admin';
+                    
                     Swal.fire({
                         icon: 'success',
                         title: '¡Bienvenido!',
-                        text: `Hola ${response.data.user.nombre}`,
+                        text: esAdmin ? 
+                            `Bienvenido Administrador ${profileResponse.data.nombre}` : 
+                            `Hola ${response.data.user.nombre}`,
                         confirmButtonColor: '#667eea',
                         timer: 2000,
                         timerProgressBar: true
                     }).then(() => {
-                        window.location.href = 'index.html';
+                        // Redirigir a admin si es administrador
+                        window.location.href = esAdmin ? 'admin/index.html' : 'index.html';
                     });
                 } else {
                     throw new Error(response.error || 'Error al iniciar sesión');

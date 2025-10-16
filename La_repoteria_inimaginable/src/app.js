@@ -9,6 +9,7 @@ import producto_routes from './routes/producto_routes.js';
 import categoria_routes from './routes/categoria_routes.js';
 import pedido_routes from './routes/pedido_routes.js';
 import auth_routes from './routes/auth_routes.js';
+import admin_routes from './routes/admin_routes.js';
 
 // Obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
@@ -35,7 +36,8 @@ app.get('/', (req, res) => {
             productos: '/api/productos',
             categorias: '/api/categorias',
             pedidos: '/api/pedidos',
-            auth: '/api/auth'
+            auth: '/api/auth',
+            admin: '/api/admin'
         }
     });
 });
@@ -45,6 +47,7 @@ app.use('/api/productos', producto_routes);
 app.use('/api/categorias', categoria_routes);
 app.use('/api/pedidos', pedido_routes);
 app.use('/api/auth', auth_routes);
+app.use('/api/admin', admin_routes);
 
 // Manejo de rutas no encontradas
 app.use((req, res) => {

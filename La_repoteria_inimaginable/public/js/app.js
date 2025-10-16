@@ -73,6 +73,18 @@ function mostrarInfoUsuario() {
         const authButtons = document.getElementById('authButtons');
         if (authButtons) authButtons.style.display = 'none';
         
+        // Mostrar botón de admin si el usuario es administrador
+        const adminPanelBtn = document.getElementById('adminPanelBtn');
+        if (adminPanelBtn) {
+            if (usuarioLogueado.rol === 'admin') {
+                adminPanelBtn.style.display = 'inline-block';
+                console.log('✅ Usuario es admin - Mostrando botón de panel admin');
+            } else {
+                adminPanelBtn.style.display = 'none';
+                console.log('ℹ️ Usuario no es admin - Ocultando botón de panel admin');
+            }
+        }
+        
         // Configurar evento de logout (solo una vez)
         const logoutBtn = document.getElementById('logoutBtn');
         if (logoutBtn && !logoutBtn.hasAttribute('data-configured')) {
@@ -132,6 +144,13 @@ function renderizarFiltrosCategorias() {
     // Limpiar filtros existentes (excepto "Todos")
     const botones = categoryFilter.querySelectorAll('.category-btn:not([data-category="all"])');
     botones.forEach(btn => btn.remove());
+
+    // Agregar evento al botón "Todos"
+    const btnTodos = categoryFilter.querySelector('[data-category="all"]');
+    if (btnTodos && !btnTodos.hasAttribute('data-configured')) {
+        btnTodos.setAttribute('data-configured', 'true');
+        btnTodos.addEventListener('click', () => filtrarPorCategoria('all'));
+    }
 
     // Agregar categorías
     categorias.forEach(categoria => {

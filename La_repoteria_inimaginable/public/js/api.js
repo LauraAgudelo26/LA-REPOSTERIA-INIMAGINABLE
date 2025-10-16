@@ -198,9 +198,55 @@ class API {
         return this.request('/pedidos/estadisticas');
     }
 
+    // ===== ADMIN =====
+    async getDashboardStats() {
+        return this.request('/admin/dashboard/stats');
+    }
+
+    async getUsuarios() {
+        return this.request('/admin/usuarios');
+    }
+
+    async updateUsuarioRol(id, rol) {
+        return this.request(`/admin/usuarios/${id}/rol`, {
+            method: 'PUT',
+            body: JSON.stringify({ rol })
+        });
+    }
+
+    async deleteUsuario(id) {
+        return this.request(`/admin/usuarios/${id}`, {
+            method: 'DELETE'
+        });
+    }
+
+    async getTodosPedidos() {
+        return this.request('/admin/pedidos');
+    }
+
+    async updateEstadoPedido(id, estado) {
+        return this.request(`/admin/pedidos/${id}/estado`, {
+            method: 'PUT',
+            body: JSON.stringify({ estado })
+        });
+    }
+
+    async getReporteVentas(fechaInicio, fechaFin) {
+        let url = '/admin/reportes/ventas';
+        if (fechaInicio && fechaFin) {
+            url += `?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`;
+        }
+        return this.request(url);
+    }
+
     // ===== UTILIDADES =====
     isAuthenticated() {
         return !!this.token;
+    }
+
+    isAdmin() {
+        const user = this.getUser();
+        return user && user.rol === 'admin';
     }
 
     getUser() {

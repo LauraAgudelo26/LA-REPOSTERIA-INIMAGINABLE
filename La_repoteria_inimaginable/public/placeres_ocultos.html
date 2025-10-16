@@ -133,7 +133,10 @@
             <!-- Información del usuario logueado -->
             <div class="user-info" id="userInfo" style="display: none;">
                 <i class="fas fa-user-circle"></i>
-                <span id="userName">Invitado</span>
+                <span id="userName" style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; margin: 0 5px;">Invitado</span>
+                <a href="/admin/index.html" id="adminPanelBtn" class="ms-2 text-white" title="Panel de Administración" style="display: none; background: rgba(255,215,0,0.2); padding: 5px 10px; border-radius: 5px; text-decoration: none;">
+                    <i class="fas fa-shield-alt"></i> Admin
+                </a>
                 <a href="#" id="logoutBtn" class="ms-2 text-white" title="Cerrar Sesión">
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
@@ -262,6 +265,16 @@
                 if (userInfo) userInfo.style.display = 'block';
                 const authButtons = document.getElementById('authButtons');
                 if (authButtons) authButtons.style.display = 'none';
+                
+                // Mostrar botón de admin si el usuario es administrador
+                const adminPanelBtn = document.getElementById('adminPanelBtn');
+                if (adminPanelBtn) {
+                    if (usuarioLogueado.rol === 'admin') {
+                        adminPanelBtn.style.display = 'inline-block';
+                    } else {
+                        adminPanelBtn.style.display = 'none';
+                    }
+                }
                 
                 const logoutBtn = document.getElementById('logoutBtn');
                 if (logoutBtn && !logoutBtn.hasAttribute('data-configured')) {

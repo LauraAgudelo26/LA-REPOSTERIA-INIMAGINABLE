@@ -71,7 +71,8 @@ export const register = async (req, res) => {
                 user: {
                     id: userId,
                     nombre,
-                    email
+                    email,
+                    rol: 'cliente' // Por defecto los nuevos usuarios son clientes
                 }
             }
         });
@@ -132,7 +133,8 @@ export const login = async (req, res) => {
                     nombre: `${user.nombre} ${user.apellido}`.trim(),
                     email: user.email,
                     telefono: user.telefono,
-                    direccion: user.direccion
+                    direccion: user.direccion,
+                    rol: user.rol
                 }
             }
         });
